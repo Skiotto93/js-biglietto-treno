@@ -2,12 +2,11 @@
     // prezzo del biglietto al km
 const priceAtKm = 0.21;
     // età passeggero     
-const age = 33;
+const age = 70;
     // distanza percorsa
-const distanceTraveled = 653;
+const distanceTraveled = 657;
     // calcolo prezzo lordo
 const grossPrice = (priceAtKm * distanceTraveled);
-console.log ("Prezzo lordo" + grossPrice + "€");
 // 2. va applicato uno sconto del 20% per i minorenni, va applicato uno sconto del 40% per gli over 65 
 if (age < 18) {
     discount = 0.2;
@@ -20,9 +19,10 @@ if (age < 18) {
 } else if ( 18 < age && age > 65) {
     netPrice = (grossPrice);
 } 
-
-console.log ("Sconto" + netDiscount + "€");
-console.log ("Prezzo netto" + netPrice + "€") ;
 // Prezzo finale (con al massimo 2 numeri decimali)
+finalDiscount = (Math.round(netDiscount * 100) / 100 );
 finalPrice = ( Math.round(netPrice * 100) / 100 );
-console.log (finalPrice + "€")
+
+document.getElementById("PrezzoLordo").innerHTML = grossPrice + "-";
+document.getElementById("Sconto").innerHTML = finalDiscount ;
+document.getElementById("Totale").innerHTML = finalPrice ;
