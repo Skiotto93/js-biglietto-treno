@@ -17,8 +17,9 @@ if (age < 18) {
     netDiscount = (grossPrice * discount);
     netPrice = (grossPrice - netDiscount);
 } else if ( 18 < age && age > 65) {
+    discount = 0 ;
     netPrice = (grossPrice);
-    netDiscount = 0 ;
+    netDiscount = (grossPrice * discount);
 } 
 // Prezzo finale (con al massimo 2 numeri decimali)
 finalDiscount = ( Math.round(netDiscount * 100) / 100 );
