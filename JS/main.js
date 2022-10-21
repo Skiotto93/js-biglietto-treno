@@ -2,9 +2,13 @@
     // prezzo del biglietto al km
 const priceAtKm = 0.21;
     // età passeggero     
-const age = 16;
+const age = Number ( prompt("inserisci la tua età"));
     // distanza percorsa
-const distanceTraveled = 1200;
+const distanceTraveled = Number ( prompt("inserisci la distanza da percorrere"));
+if( isNaN(distanceTraveled) || isNaN(age) || distanceTraveled <= 0 || age <= 0 ) {
+    alert("Attento! devi inserire dei numeri e i numeri devo essere!");
+    window.location.reload();
+}
     // calcolo prezzo lordo
 const grossPrice = (priceAtKm * distanceTraveled);
 let netDiscount = 0 ;
@@ -18,15 +22,15 @@ if (age < 18) {
     discount = 0.4;
     netDiscount = (grossPrice * discount);
     netPrice = (grossPrice - netDiscount);
-} else if ( 18 < age && age > 65) {
+} else if ( 18 < age && age > 65 ) {
     discount = 0 ;
-    netPrice = (grossPrice);
-    netDiscount = (grossPrice * discount);
+    netPrice = (grossPrice - netDiscount);
+    netDiscount = 0;
 } 
 // Prezzo finale (con al massimo 2 numeri decimali)
 finalDiscount = ( Math.round(netDiscount * 100) / 100 );
 finalPrice = ( Math.round(netPrice * 100) / 100 );
 
-document.getElementById("PrezzoLordo").innerHTML = grossPrice + "-";
-document.getElementById("Sconto").innerHTML = finalDiscount + "=" ;
-document.getElementById("Totale").innerHTML = finalPrice ;
+document.getElementById("PrezzoLordo").innerHTML = "Prezzo del biglietto " + grossPrice + " €" + " -";
+document.getElementById("Sconto").innerHTML ="Sconto " + finalDiscount + " €" + " =" ;
+document.getElementById("Totale").innerHTML ="Totale " + finalPrice + " €";
